@@ -1,0 +1,59 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Ejemplo de formulario en Vue.js</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <form>  
+        <label>Día:</label>
+        <input type="number" v-model="day" />
+        <label>Mes:</label>
+        <input type="number" v-model="month" />
+        <label>Año:</label>
+        <input type="number" v-model="year" />
+        <button @click.prevent="sendDate">Enviar</button>
+        <button @click.prevent="clearFields">Eliminar</button>
+      </form>
+      <div v-if="date">{{ formattedDate }}</div>
+    </div>
+
+    <script>
+      new Vue({
+        el: "#app",
+        data: {
+          day: null,
+          month: null,
+          year: null,
+          date: null,
+        },
+        methods: {
+          sendDate() {
+            this.date = new Date(this.year, this.month - 1, this.day);
+          },
+          clearFields() {
+            this.day = null;
+            this.month = null;
+            this.year = null;
+            this.date = null;
+          },
+        },
+        computed: {
+          formattedDate() {
+            if (this.date) {
+              const day = this.date.getDate().toString().padStart(2, "0");
+              const month = (this.date.getMonth() + 1)
+                .toString()
+                .padStart(2, "0");
+              const year = this.date.getFullYear().toString();
+              return `${day}/${month}/${year}`;
+            } else {
+              return "";
+            }
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

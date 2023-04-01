@@ -1,0 +1,22 @@
+- Comando para entrar a la interfaz interariva de vue
+	- vue ui
+
+- Comando para crear un proyecto de vue
+	- vue create <name>
+
+- Correr proyecto
+	- npm run serve
+
+- configuraciones de producción
+	- npm run build
+
+- Comando para verificar buenas practicas de codigo de vue
+	- npm run lint
+
+- Crear App de VUE
+	- npm init vue@latest
+
+- Declaración de variables
+	- ref() -> para variables comunes
+	- reactive() -> para <Array> y <Object>
+	- provider() -> para definirla global
